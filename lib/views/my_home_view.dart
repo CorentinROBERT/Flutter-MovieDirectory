@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_directory/models/response_list_genre.dart';
 import 'package:movie_directory/models/response_list_movie.dart';
 import 'package:movie_directory/services/api_service.dart';
+import 'package:movie_directory/views/genre_view.dart';
 import 'package:movie_directory/views/top_rated_movie_view.dart';
 
 class MyHomeView extends StatefulWidget {
@@ -59,7 +60,7 @@ class MyHomeState extends State<MyHomeView> {
                       padding: const EdgeInsets.only(left: 10, top: 10),
                       child: Column(
                         children: genres!.genres
-                            .map((genre) => ListTile(title: Text(genre.name)))
+                            .map((genre) => GenreView(genre: genre))
                             .toList(),
                       ),
                     )
