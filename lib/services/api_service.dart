@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:movie_directory/models/genre.dart';
+import 'package:movie_directory/models/response_details_movie.dart';
+import 'package:movie_directory/models/response_details_movie_credit.dart';
 import 'package:movie_directory/models/response_list_genre.dart';
 import 'package:movie_directory/models/response_list_movie.dart';
 import 'package:movie_directory/services/api_key_service.dart';
@@ -46,6 +48,36 @@ class ApiService {
       final call = await get(Uri.parse(queryString));
       Map<String, dynamic> map = json.decode(call.body);
       return ResponseListGenre.fromJson(map);
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  Future<ResponseDetailsMovie?> getDetailsMovie(int movieId) async {
+    try {
+      const String selectedlangage = "fr-FR";
+      final queryString =
+          "$baseUrl$movieId?$appId$api&$language$selectedlangage";
+      print(queryString);
+      final call = await get(Uri.parse(queryString));
+      Map<String, dynamic> map = json.decode(call.body);
+      return ResponseDetailsMovie.fromJson(map);
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  Future<ResponseDetailsMovieCredit?> getDetailsMovieCredit(int movieId) async {
+    try {
+      const String selectedlangage = "fr-FR";
+      final queryString =
+          "$baseUrl$movieId/credits?$appId$api&$language$selectedlangage";
+      print(queryString);
+      final call = await get(Uri.parse(queryString));
+      Map<String, dynamic> map = json.decode(call.body);
+      return ResponseDetailsMovieCredit.fromJson(map);
     } catch (e) {
       print(e);
       return null;

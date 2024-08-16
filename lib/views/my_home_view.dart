@@ -28,6 +28,7 @@ class MyHomeState extends State<MyHomeView> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: const Text("Movie Directory"),
       ),
       body: (movies == null || movies!.results.isEmpty)
@@ -43,7 +44,8 @@ class MyHomeState extends State<MyHomeView> {
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ),
-                  SizedBox(
+                  Container(
+                    color: Colors.white,
                     height: size.height / 4,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -56,13 +58,25 @@ class MyHomeState extends State<MyHomeView> {
                     ),
                   ),
                   if (genres != null && genres!.genres.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 10),
-                      child: Column(
-                        children: genres!.genres
-                            .map((genre) => GenreView(genre: genre))
-                            .toList(),
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text("Genres ",
+                              style: Theme.of(context).textTheme.headlineLarge),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, top: 10),
+                          child: Wrap(
+                            spacing: 5.0,
+                            direction: Axis.horizontal,
+                            children: genres!.genres
+                                .map((genre) => GenreView(genre: genre))
+                                .toList(),
+                          ),
+                        ),
+                      ],
                     )
                   else
                     const SizedBox()

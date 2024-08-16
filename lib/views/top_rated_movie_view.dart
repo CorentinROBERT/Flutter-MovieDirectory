@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_directory/models/response_list_movie.dart';
 import 'package:movie_directory/services/api_service.dart';
+import 'package:movie_directory/views/details_movie.dart';
 
 class TopRatedMovieView extends StatelessWidget {
   Movie movie;
@@ -8,24 +9,21 @@ class TopRatedMovieView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 7,
-      child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Image.network(
-              "${ApiService().imageUrl}${movie.posterPath}",
-              height: 150,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Text(
-                movie.title,
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ]),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => DetailsMovie(movie: movie)));
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: Image.network(
+          "${ApiService().imageUrl}${movie.posterPath}",
+          fit: BoxFit.fill,
+        ),
+      ),
     );
   }
 }
