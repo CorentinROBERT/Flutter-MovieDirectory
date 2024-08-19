@@ -11,6 +11,7 @@ import 'package:movie_directory/services/api_key_service.dart';
 class ApiService {
   String baseUrl = "https://api.themoviedb.org/3/movie/";
   String genreUrl = "https://api.themoviedb.org/3/genre/movie/list";
+  String discoverUrl = "https://api.themoviedb.org/3/discover/movie";
   String imageUrl = "https://image.tmdb.org/t/p/w500/";
   String appId = "api_key=";
   String includeAdult = "include_adult=";
@@ -94,6 +95,57 @@ class ApiService {
       final call = await get(Uri.parse(queryString));
       Map<String, dynamic> map = json.decode(call.body);
       return ResponseVideoMovie.fromJson(map);
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  Future<ResponseListMovie?> getPopularMovie() async {
+    try {
+      const isIncludeAdult = false;
+      const String selectedlangage = "fr-FR";
+      final queryString =
+          "${prepareQuery()}popular?$appId$api&$language$selectedlangage&$includeAdult$isIncludeAdult";
+      print(queryString);
+      final call = await get(Uri.parse(queryString));
+      Map<String, dynamic> map = json.decode(call.body);
+      return ResponseListMovie.fromJson(map);
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  Future<ResponseListMovie?> getUpcomingMovie() async {
+    try {
+      const isIncludeAdult = false;
+      const String selectedlangage = "fr-FR";
+      final queryString =
+          "${prepareQuery()}upcoming?$appId$api&$language$selectedlangage&$includeAdult$isIncludeAdult";
+      print(queryString);
+      final call = await get(Uri.parse(queryString));
+      Map<String, dynamic> map = json.decode(call.body);
+      return ResponseListMovie.fromJson(map);
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  Future<ResponseListMovie?> getFilteredMovie(List<int> genreIds,
+      {int page = 1}) async {
+    try {
+      const isIncludeAdult = false;
+      const String selectedlangage = "fr-FR";
+      const String selectedPage = "page=";
+      const String selectedGenre = "with_genres=";
+      final queryString =
+          "$discoverUrl?$appId$api&$language$selectedlangage&$includeAdult$isIncludeAdult&$selectedPage$page&$selectedGenre${genreIds.join(',')}";
+      print(queryString);
+      final call = await get(Uri.parse(queryString));
+      Map<String, dynamic> map = json.decode(call.body);
+      return ResponseListMovie.fromJson(map);
     } catch (e) {
       print(e);
       return null;

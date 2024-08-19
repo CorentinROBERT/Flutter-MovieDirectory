@@ -8,7 +8,6 @@ import 'package:movie_directory/services/api_service.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class DetailsMovie extends StatefulWidget {
@@ -188,10 +187,9 @@ class DetailMovieState extends State<DetailsMovie> {
                                               Theme.of(context).primaryColor),
                                       children: [
                                     TextSpan(
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color:
-                                                Theme.of(context).primaryColor),
+                                            color: Colors.black),
                                         text:
                                             "${widget.detailsMovie?.voteAverage.toStringAsFixed(1)}/10 (${widget.detailsMovie?.voteCount})")
                                   ]))
@@ -213,7 +211,14 @@ class DetailMovieState extends State<DetailsMovie> {
                           AppLocalizations.of(context)!.overview,
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
-                        Text(widget.detailsMovie?.overview ?? "")
+                        Text(
+                          widget.detailsMovie != null &&
+                                  widget.detailsMovie!.overview.isNotEmpty
+                              ? widget.detailsMovie!.overview
+                              : AppLocalizations.of(context)!
+                                  .synopsis_not_available,
+                          style: const TextStyle(color: Colors.black),
+                        )
                       ],
                     ),
                   )),
