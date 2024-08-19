@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:movie_directory/models/genre.dart';
 
 class ResponseListGenre {

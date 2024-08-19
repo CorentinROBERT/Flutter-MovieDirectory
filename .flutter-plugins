@@ -1,4 +1,9 @@
 # This is a generated file; do not edit or check into version control.
+flutter_inappwebview=/Users/corentinrobert/.pub-cache/hosted/pub.dev/flutter_inappwebview-6.0.0/
+flutter_inappwebview_android=/Users/corentinrobert/.pub-cache/hosted/pub.dev/flutter_inappwebview_android-1.0.13/
+flutter_inappwebview_ios=/Users/corentinrobert/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.0.13/
+flutter_inappwebview_macos=/Users/corentinrobert/.pub-cache/hosted/pub.dev/flutter_inappwebview_macos-1.0.11/
+flutter_inappwebview_web=/Users/corentinrobert/.pub-cache/hosted/pub.dev/flutter_inappwebview_web-1.0.8/
 path_provider_linux=/Users/corentinrobert/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
 path_provider_windows=/Users/corentinrobert/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
 shared_preferences=/Users/corentinrobert/.pub-cache/hosted/pub.dev/shared_preferences-2.3.1/
@@ -7,3 +12,10 @@ shared_preferences_foundation=/Users/corentinrobert/.pub-cache/hosted/pub.dev/sh
 shared_preferences_linux=/Users/corentinrobert/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.4.1/
 shared_preferences_web=/Users/corentinrobert/.pub-cache/hosted/pub.dev/shared_preferences_web-2.4.2/
 shared_preferences_windows=/Users/corentinrobert/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.4.1/
+url_launcher=/Users/corentinrobert/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
+url_launcher_android=/Users/corentinrobert/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9/
+url_launcher_ios=/Users/corentinrobert/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.1/
+url_launcher_linux=/Users/corentinrobert/.pub-cache/hosted/pub.dev/url_launcher_linux-3.2.0/
+url_launcher_macos=/Users/corentinrobert/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.0/
+url_launcher_web=/Users/corentinrobert/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.3/
+url_launcher_windows=/Users/corentinrobert/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.2/
