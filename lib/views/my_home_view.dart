@@ -4,6 +4,7 @@ import 'package:movie_directory/models/response_list_movie.dart';
 import 'package:movie_directory/services/api_service.dart';
 import 'package:movie_directory/views/genre_view.dart';
 import 'package:movie_directory/views/top_rated_movie_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHomeView extends StatefulWidget {
   const MyHomeView({super.key});
@@ -29,10 +30,10 @@ class MyHomeState extends State<MyHomeView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: const Text("Movie Directory"),
+        title: Text(AppLocalizations.of(context)!.app_title),
       ),
       body: (movies == null || movies!.results.isEmpty)
-          ? const Center(child: Text("no datas"))
+          ? Center(child: Text(AppLocalizations.of(context)!.no_data))
           : SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -40,7 +41,7 @@ class MyHomeState extends State<MyHomeView> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: Text(
-                      "Top 20 movie 🍿",
+                      AppLocalizations.of(context)!.top_20_movie,
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ),
@@ -63,7 +64,7 @@ class MyHomeState extends State<MyHomeView> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
-                          child: Text("Genres ",
+                          child: Text(AppLocalizations.of(context)!.genre,
                               style: Theme.of(context).textTheme.headlineLarge),
                         ),
                         Padding(

@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:movie_directory/models/genre.dart';
 import 'package:movie_directory/models/response_details_movie.dart';
 import 'package:movie_directory/models/response_details_movie_credit.dart';
 import 'package:movie_directory/models/response_list_genre.dart';
 import 'package:movie_directory/models/response_list_movie.dart';
+import 'package:movie_directory/models/response_video_movie.dart';
 import 'package:movie_directory/services/api_key_service.dart';
 
 class ApiService {
@@ -15,9 +15,10 @@ class ApiService {
   String appId = "api_key=";
   String includeAdult = "include_adult=";
   String language = "language=";
+  String youtubeUrl = "https://www.youtube.com/watch?v=";
 
   String prepareQuery() {
-    return "$baseUrl";
+    return baseUrl;
   }
 
   String getImage() {
@@ -78,6 +79,21 @@ class ApiService {
       final call = await get(Uri.parse(queryString));
       Map<String, dynamic> map = json.decode(call.body);
       return ResponseDetailsMovieCredit.fromJson(map);
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  Future<ResponseVideoMovie?> getVideoMovie(int movieId) async {
+    try {
+      const String selectedlangage = "fr-FR";
+      final queryString =
+          "$baseUrl$movieId/videos?$appId$api&$language$selectedlangage";
+      print(queryString);
+      final call = await get(Uri.parse(queryString));
+      Map<String, dynamic> map = json.decode(call.body);
+      return ResponseVideoMovie.fromJson(map);
     } catch (e) {
       print(e);
       return null;

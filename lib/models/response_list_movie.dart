@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class ResponseListMovie {
   int page;
   List<Movie> results;

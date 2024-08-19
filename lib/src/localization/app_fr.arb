@@ -1,0 +1,13 @@
+{
+    "app_title":"Movie Directory",
+    "no_data":"no datas",
+    "top_20_movie":"Top 20 films 🍿",
+    "genre":"Genres ",
+    "release":"Sortie : ",
+    "runtime":"Durée : ",
+    "from":"De : ",
+    "with_":"Avec : ",
+    "rate":"Note : ",
+    "overview":"Synopsis : ",
+    "open_in_browser":"Ouvrir avec navigateur"
+}
